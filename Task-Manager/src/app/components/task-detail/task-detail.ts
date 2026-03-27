@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-
+import { Router } from '@angular/router';
 @Component({
   standalone: true,
   imports: [RouterModule],
@@ -13,8 +13,13 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
   `
 })
 export class TaskDetail {
-  id:number;
-  constructor(route: ActivatedRoute){
-    this.id = Number(route.snapshot.params['id']);
+  id!: number;
+  constructor(private route: ActivatedRoute, private router: Router) {
+    const id = Number(this.route.snapshot.params['id']);
+  
+    if (isNaN(id)) {
+      alert('Invalid Task ID');
+      this.router.navigate(['/tasks']);
+    }
   }
 }
