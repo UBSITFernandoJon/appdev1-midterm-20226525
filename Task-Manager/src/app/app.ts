@@ -1,13 +1,14 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from './components/navbar/navbar';
 
 @Component({
+  standalone: true,
   selector: 'app-root',
   imports: [RouterOutlet, Navbar],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  template: `
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
+  `
 })
-export class App {
-  protected readonly title = signal('Task-Manager');
-}
+export class App {}

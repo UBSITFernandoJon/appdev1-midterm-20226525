@@ -6,3 +6,4 @@ export interface Task {
     status: 'Pending' | 'In Progress' | 'Completed';
     priority: 'Low' | 'Medium' | 'High';
   }
+  
